@@ -1,53 +1,480 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<style>
-body {
-    background: lightgreen;
-    font-family: Verdana;
-}  
-#content {
-    background: lightyellow;
-    min-width: 200px;
-    max-width: 500px;
-    padding: 50px;
-    margin: auto;
-    margin-top: -50px;
-    line-height: 150%;
-}
-h1 {
-    letter-spacing: 2px;
-    font-size: 16px;
-    text-align: center;
-}
-h2 {
-    font-size: 14px;
-    text-align: center;
-}
-h3 {
-    font-size: 12px;
-}
-</style>
-</head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5a6bf">
+    <meta name="description" content="Ana Costa is a senior at Bob Jones University studying Business and French in Greenville, South Carolina.">
+    <title>Ana Costa — Personal Profile</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #29233d;
+            --paper: #fffaf0;
+            --pink: #f5a6bf;
+            --coral: #ff765f;
+            --purple: #7658c8;
+            --aqua: #8de0d1;
+            --yellow: #ffe477;
+            --line: 2px solid var(--ink);
+            --shadow: 7px 7px 0 var(--ink);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            color: var(--ink);
+            background-color: #f8c6b0;
+            background-image:
+                radial-gradient(circle, rgb(41 35 61 / 12%) 1.4px, transparent 1.5px),
+                linear-gradient(135deg, #f8c6b0 0%, #f5a6bf 50%, #c7b5ee 100%);
+            background-size: 15px 15px, cover;
+            font-family: "Trebuchet MS", "Arial Rounded MT Bold", sans-serif;
+            line-height: 1.65;
+        }
+
+        a {
+            color: #5436a4;
+            font-weight: 800;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: #b34262;
+        }
+
+        a:focus-visible {
+            outline: 3px dashed var(--coral);
+            outline-offset: 4px;
+        }
+
+        .page {
+            width: min(100% - 36px, 1040px);
+            margin: 0 auto;
+            padding: 28px 0 52px;
+        }
+
+        .topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 0.74rem;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .topline-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .topline-mark::before {
+            width: 13px;
+            height: 13px;
+            border: var(--line);
+            border-radius: 50%;
+            background: var(--yellow);
+            content: "";
+        }
+
+        .location {
+            padding: 6px 12px;
+            border: var(--line);
+            border-radius: 999px;
+            background: var(--paper);
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+
+        .profile {
+            overflow: hidden;
+            border: 3px solid var(--ink);
+            border-radius: 14px;
+            background: var(--paper);
+            box-shadow: 10px 10px 0 var(--ink);
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            min-height: 335px;
+            place-items: center;
+            overflow: hidden;
+            padding: 50px 24px;
+            border-bottom: var(--line);
+            background:
+                linear-gradient(145deg, transparent 0 63%, rgb(255 255 255 / 20%) 63% 65%, transparent 65%),
+                linear-gradient(35deg, transparent 0 70%, rgb(255 255 255 / 23%) 70% 72%, transparent 72%),
+                var(--purple);
+            text-align: center;
+        }
+
+        .hero::before,
+        .hero::after {
+            position: absolute;
+            width: 130px;
+            aspect-ratio: 1;
+            border: 2px solid var(--ink);
+            border-radius: 50%;
+            background: var(--yellow);
+            box-shadow: 0 0 0 10px rgb(255 228 119 / 26%), 0 0 0 22px rgb(255 228 119 / 15%);
+            content: "";
+        }
+
+        .hero::before {
+            top: -52px;
+            right: 9%;
+        }
+
+        .hero::after {
+            bottom: -82px;
+            left: 7%;
+            width: 175px;
+            background: var(--aqua);
+            box-shadow: 0 0 0 10px rgb(141 224 209 / 24%), 0 0 0 22px rgb(141 224 209 / 14%);
+        }
+
+        .clover-buddy {
+            position: absolute;
+            z-index: 1;
+            width: 68px;
+            height: 66px;
+            filter: drop-shadow(3px 4px 0 var(--ink));
+        }
+
+        .clover-one {
+            top: 28%;
+            left: 9%;
+            transform: rotate(-12deg);
+        }
+
+        .clover-two {
+            right: 12%;
+            bottom: 17%;
+            transform: rotate(12deg) scale(0.78);
+            --clover-color: var(--pink);
+        }
+
+        .clover-leaf {
+            position: absolute;
+            width: 27px;
+            height: 27px;
+            border: var(--line);
+            border-radius: 50%;
+            background: var(--clover-color, var(--aqua));
+        }
+
+        .clover-leaf:nth-child(1) {
+            top: 0;
+            left: 8px;
+        }
+
+        .clover-leaf:nth-child(2) {
+            top: 0;
+            right: 8px;
+        }
+
+        .clover-leaf:nth-child(3) {
+            top: 16px;
+            left: 8px;
+        }
+
+        .clover-leaf:nth-child(4) {
+            top: 16px;
+            right: 8px;
+        }
+
+        .clover-face {
+            position: absolute;
+            top: 13px;
+            left: 22px;
+            width: 24px;
+            height: 21px;
+            border: var(--line);
+            border-radius: 50%;
+            background: var(--paper);
+        }
+
+        .clover-face::before {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--ink);
+            box-shadow: 8px 0 var(--ink);
+            content: "";
+        }
+
+        .clover-face::after {
+            position: absolute;
+            top: 10px;
+            left: 7px;
+            width: 6px;
+            height: 3px;
+            border-bottom: 1.5px solid var(--ink);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .clover-stem {
+            position: absolute;
+            top: 40px;
+            left: 34px;
+            width: 19px;
+            height: 18px;
+            border-right: 3px solid var(--ink);
+            border-bottom: 3px solid var(--ink);
+            border-radius: 0 0 14px;
+            transform: rotate(13deg);
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin: 0 0 13px;
+            padding: 5px 12px;
+            border: var(--line);
+            border-radius: 999px;
+            background: var(--yellow);
+            box-shadow: 3px 3px 0 var(--ink);
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: var(--paper);
+            font-size: clamp(2.8rem, 8vw, 5.3rem);
+            font-weight: 1000;
+            letter-spacing: -0.07em;
+            line-height: 0.98;
+            text-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .hero-subtitle {
+            margin: 0;
+            color: white;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 700;
+            text-shadow: 1px 2px 0 var(--ink);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+            gap: 22px;
+            padding: 28px;
+        }
+
+        .intro {
+            padding: 8px 8px 8px 2px;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: 0.76rem;
+            font-weight: 900;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .section-label::after {
+            height: 2px;
+            flex: 1;
+            background: var(--ink);
+            content: "";
+        }
+
+        .intro p {
+            max-width: 590px;
+            margin-bottom: 15px;
+            font-size: 1.04rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .link-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 3px 5px 5px 0;
+            padding: 8px 12px;
+            border: var(--line);
+            border-radius: 8px;
+            background: var(--aqua);
+            box-shadow: 3px 3px 0 var(--ink);
+            text-decoration: none;
+        }
+
+        .link-card:hover {
+            background: var(--yellow);
+        }
+
+        .link-card::after {
+            content: ">";
+        }
+
+        .education {
+            align-self: start;
+            padding: 19px;
+            border: var(--line);
+            border-radius: 10px;
+            background: #fff0a8;
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+
+        .education .section-label {
+            margin-bottom: 16px;
+        }
+
+        .education-title {
+            margin: 0 0 4px;
+            font-size: 1.15rem;
+            font-weight: 900;
+        }
+
+        .education-school {
+            margin: 0 0 16px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 680px) {
+            .page {
+                width: min(100% - 24px, 520px);
+                padding-top: 18px;
+            }
+
+            .topline {
+                font-size: 0.64rem;
+                letter-spacing: 0.08em;
+            }
+
+            .location {
+                padding: 5px 8px;
+            }
+
+            .hero {
+                min-height: 290px;
+            }
+
+            .hero::before {
+                right: -45px;
+            }
+
+            .clover-one {
+                top: auto;
+                bottom: 8%;
+                left: 2%;
+                transform: rotate(-12deg) scale(0.72);
+            }
+
+            .clover-two {
+                right: -5px;
+                bottom: 2%;
+                transform: rotate(12deg) scale(0.62);
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 22px;
+            }
+
+            .intro {
+                padding: 0;
+            }
+
+            .education {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .link-card {
+                transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+            }
+
+            .link-card:hover {
+                transform: translate(-2px, -2px);
+                box-shadow: 5px 5px 0 var(--ink);
+            }
+        }
+    </style>
+</head>
 <body>
-    <div id="content">
-        <h1>Sarah Gothard</h1>
-        <h2>Freshman in Greenville, South Carolina</h2>
-        
-         <p>I am a freshman at Bob Jones University studying computer science with a minor in 
-            mathematics. I work for the Computer Science department as a lab monitor.</p>
-         <p>
-            I am a member of Gateway Baptist Church. My favorite website is  
-            <a href="https://mobilehymns.org/">here</a>, and you can email me  
-            <a href="mailto:sgothard@bju.edu">here</a>.
-         </p> 
-         <p>
-            I enjoy listening to podcasts and having deep conversations.
-         </p>
-        <h3>EDUCATION</h3>
-        Computer Science<br />
-        Bob Jones University<br />
-        Example image:
-        <img src="https://cs.bju.edu/media/bju-math-division/bju-computer-science/site-assets/images/cs-logo-main.png" />
-    </div>
+    <main class="page">
+        <div class="topline">
+            <span class="topline-mark">Personal profile</span>
+            <span class="location">Greenville, South Carolina</span>
+        </div>
+
+        <article class="profile">
+            <header class="hero">
+                <span class="clover-buddy clover-one" aria-hidden="true">
+                    <i class="clover-leaf"></i>
+                    <i class="clover-leaf"></i>
+                    <i class="clover-leaf"></i>
+                    <i class="clover-leaf"></i>
+                    <span class="clover-face"></span>
+                    <span class="clover-stem"></span>
+                </span>
+                <span class="clover-buddy clover-two" aria-hidden="true">
+                    <i class="clover-leaf"></i>
+                    <i class="clover-leaf"></i>
+                    <i class="clover-leaf"></i>
+                    <i class="clover-leaf"></i>
+                    <span class="clover-face"></span>
+                    <span class="clover-stem"></span>
+                </span>
+                <div class="hero-copy">
+                    <p class="eyebrow">A little about me</p>
+                    <h1>Ana Costa</h1>
+                    <p class="hero-subtitle">Senior in Greenville, South Carolina</p>
+                </div>
+            </header>
+
+            <div class="content">
+                <section class="intro" aria-labelledby="about-heading">
+                    <h2 class="section-label" id="about-heading">Hello there</h2>
+                    <p>I am a senior at Bob Jones University studying Business and French with minors in Spanish and Worldview Studies. My favorite website is Pinterest. This is a little project for my Digital Literacy class. I enjoy learning about different cultures, reading, and travelling.</p>
+                </section>
+
+                <aside class="education" aria-labelledby="education-heading">
+                    <h2 class="section-label" id="education-heading">Education</h2>
+                    <p class="education-title">Business and Applied French</p>
+                    <p class="education-school">Bob Jones University</p>
+                </aside>
+            </div>
+        </article>
+    </main>
 </body>
 </html>
